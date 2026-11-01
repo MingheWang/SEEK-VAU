@@ -187,6 +187,10 @@ All compared methods are evaluated on SEEK-Bench under a matched visual budget; 
 
 On **Evidence F1@3**, SEEK-VAU reaches **43.7**, ahead of the strongest baselines Qwen3-VL (28.1) and MiMo-VL (27.6) — the search-and-verify protocol improves not only final answers but also the recovery of the evidence windows that justify them, while using *fewer* frames on average than the fixed budget.
 
+<p align="center">
+  <img src="assets/evidence_leaderboard.png" width="85%">
+</p>
+
 <details><summary><b>Ablation study</b> (attribution of gains)</summary>
 
 | Method | T. mIoU | QA Acc. | E. F1 |
