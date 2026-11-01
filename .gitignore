@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Environments
+.env
+*.env
+!envs/*.yml
+
+# Experiment artifacts
+output/
+artifacts/
+refine-logs/
+wandb/
+*.ckpt
+*.pt
+*.safetensors
+
+# Data (download via the SEEK-Bench release; do not commit videos)
+data/
+*.mp4
+*.avi
+*.mkv
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
