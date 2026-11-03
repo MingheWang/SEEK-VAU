@@ -92,7 +92,7 @@ data/
 ## 🔨 Installation
 
 ```bash
-git clone https://github.com/cornell-hust/SEEK-VAU.git
+git clone https://github.com/MingheWang/SEEK-VAU.git
 cd SEEK-VAU
 
 # Training environment (SFT + GRPO)
@@ -258,4 +258,4 @@ If you find SEEK-VAU or SEEK-Bench useful for your research, please cite:
 
 ## 📮 Contact
 
-For questions and bug reports, please open an issue on [GitHub Issues](https://github.com/cornell-hust/SEEK-VAU/issues). We aim to respond within a few days.
+For questions and bug reports, please open an issue on [GitHub Issues](https://github.com/MingheWang/SEEK-VAU/issues). We aim to respond within a few days.
