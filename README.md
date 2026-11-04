@@ -1,9 +1,8 @@
 # SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search
 
-<!-- TODO: replace arXiv placeholder links below with the real arXiv abs page -->
 <!-- TODO: replace <HF_ACCOUNT>/SEEK-Bench with the real HuggingFace dataset link once created -->
 
-[![Paper](https://img.shields.io/badge/arXiv-SEEK--VAU-B31B1B.svg)](https://arxiv.org/abs/XXXX.XXXXX)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.04554-B31B1B.svg)](https://arxiv.org/abs/2611.04554)
 [![Conference](https://img.shields.io/badge/NeurIPS-2026-Accepted-success.svg)](https://neurips.cc/)
 [![Code License](https://img.shields.io/badge/Code_License-Apache_2.0-green.svg)](LICENSE)
 [![Dataset License](https://img.shields.io/badge/SEEK--Bench_License-CC_BY--NC_4.0-yellow.svg)](#-seek-bench)
@@ -11,7 +10,7 @@
 
 This is the official repository of the NeurIPS 2026 paper **"SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search"**, providing the full training / inference / evaluation code of SEEK-VAU and the **SEEK-Bench** benchmark.
 
-**[[Paper]](https://arxiv.org/abs/XXXX.XXXXX)** · **[[SEEK-Bench Dataset]](https://huggingface.co/datasets/<HF_ACCOUNT>/SEEK-Bench)**
+**[[Paper]](https://arxiv.org/abs/2611.04554)** · **[[SEEK-Bench Dataset]](https://huggingface.co/datasets/<HF_ACCOUNT>/SEEK-Bench)**
 
 <p align="center">
   <img src="assets/teaser.png" width="95%">
@@ -19,8 +18,8 @@ This is the official repository of the NeurIPS 2026 paper **"SEEK-VAU: Towards E
 
 ## 📰 News
 
+- **`2026/11/03`**: 📄 arXiv preprint released — [arXiv:2611.04554](https://arxiv.org/abs/2611.04554).
 - **`2026/11/01`**: 🎉 SEEK-VAU is accepted to **NeurIPS 2026**. Code and SEEK-Bench are released.
-- `2026/XX/XX`: arXiv preprint available (link TBD).
 
 ## ✨ Highlights
 
@@ -237,11 +236,24 @@ SEEK-VAU/
 If you find SEEK-VAU or SEEK-Bench useful for your research, please cite:
 
 ```bibtex
-@inproceedings{seekvau2026,
+@inproceedings{wang2026seekvau,
   title     = {SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search},
-  author    = {TODO: full author list from the camera-ready paper},
+  author    = {Wang, Minghe and Zeng, Weijun and Luo, Dapeng and Wang, Xinyue and Sang, Nong},
   booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
   year      = {2026}
+}
+```
+
+The preprint version:
+
+```bibtex
+@misc{wang2026seekvau_arxiv,
+  title         = {SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search},
+  author        = {Wang, Minghe and Zeng, Weijun and Luo, Dapeng and Wang, Xinyue and Sang, Nong},
+  year          = {2026},
+  eprint        = {2611.04554},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
 }
 ```
 
