@@ -61,8 +61,6 @@ Evaluation is conducted on **SEEK-Bench** (introduced in the paper): **2,878 epi
 
 > The SEEK-Bench data release is maintained **separately from this code repository** and will be linked here once published. The release contains annotations only; source videos follow the upstream MSAD / ECVA terms.
 
-> **License.** SEEK-Bench annotations are released under **CC BY-NC 4.0** (non-commercial). The source videos follow the terms of the original MSAD / ECVA datasets.
-
 ## 🔨 Installation
 
 ```bash
