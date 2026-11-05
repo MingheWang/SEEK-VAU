@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="20" role="img" aria-label="NeurIPS 2026: Accepted">
+  <title>NeurIPS 2026: Accepted</title>
+  <linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient>
+  <clipPath id="r"><rect width="150" height="20" rx="3" fill="#fff"/></clipPath>
+  <g clip-path="url(#r)">
+    <rect width="86" height="20" fill="#555"/>
+    <rect x="86" width="64" height="20" fill="#97CA00"/>
+    <rect width="150" height="20" fill="url(#s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="110" text-rendering="geometricPrecision">
+    <text transform="scale(.1)" x="430" y="150" fill="#010101" fill-opacity=".3" textLength="760" lengthAdjust="spacingAndGlyphs">NeurIPS 2026</text>
+    <text transform="scale(.1)" x="430" y="140" textLength="760" lengthAdjust="spacingAndGlyphs">NeurIPS 2026</text>
+    <text transform="scale(.1)" x="1180.0" y="150" fill="#010101" fill-opacity=".3" textLength="540" lengthAdjust="spacingAndGlyphs">Accepted</text>
+    <text transform="scale(.1)" x="1180.0" y="140" textLength="540" lengthAdjust="spacingAndGlyphs">Accepted</text>
+  </g>
+</svg>
