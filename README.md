@@ -195,7 +195,3 @@ The preprint version:
 ## 📄 License
 
 This repository (code) is released under the **Apache 2.0 License** (see [LICENSE](LICENSE)). The SEEK-Bench data release carries its own license terms, stated in its own repository when available.
-
-## 📮 Contact
-
-For questions and bug reports, please open an issue on [GitHub Issues](https://github.com/MingheWang/SEEK-VAU/issues). We aim to respond within a few days.
