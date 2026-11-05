@@ -1,8 +1,8 @@
 # SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search
 
-[![arXiv](https://img.shields.io/badge/arXiv-2611.04554-B31B1B.svg)](https://arxiv.org/abs/2611.04554)
-[![Conference](https://img.shields.io/badge/NeurIPS-2026-Accepted-success.svg)](https://neurips.cc/)
-[![Code License](https://img.shields.io/badge/Code_License-Apache_2.0-green.svg)](LICENSE)
+[![arXiv 2611.04554](assets/badges/arxiv.svg)](https://arxiv.org/abs/2611.04554)
+[![NeurIPS 2026 Accepted](assets/badges/neurips.svg)](https://neurips.cc/)
+[![Code License Apache 2.0](assets/badges/license.svg)](LICENSE)
 
 This is the official **code** repository of the NeurIPS 2026 paper **"SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search"**, providing the full training, inference, and evaluation pipeline. The SEEK-Bench benchmark data is released separately.
 
