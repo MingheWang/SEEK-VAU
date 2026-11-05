@@ -128,9 +128,6 @@ EXP_NAME=exp8 bash scripts/run_full_pipeline.sh
 ```bash
 # Evaluate a trained SEEK-VAU checkpoint on SEEK-Bench
 bash scripts/run_policy_rollout_vllm.sh
-
-# Fixed-observation baseline under the matched 18-frame budget
-bash scripts/run_fixed_baseline_eval_vllm.sh
 ```
 
 Evaluation reports **Temporal mIoU**, **QA Accuracy**, and **Evidence F1** on the SEEK-Bench val split (576 episodes, video-disjoint from the train split).
@@ -162,47 +159,6 @@ On **Evidence F1**, SEEK-VAU reaches **43.7**, ahead of the strongest baselines 
 <p align="center">
   <img src="assets/evidence_leaderboard.png" width="85%">
 </p>
-
-<details><summary><b>Ablation study</b> (attribution of gains)</summary>
-
-| Method | T. mIoU | QA Acc. | E. F1 |
-|---|---:|---:|---:|
-| Fixed obs. + basic sup. | 44.2 | 37.7 | 28.1 |
-| Fixed obs. + rich sup. | 46.9 | 38.2 | 28.3 |
-| Active + basic sup. | 50.1 | 40.1 | 34.3 |
-| Active + rich sup. (w/o EFCV) | 54.4 | 42.7 | 41.6 |
-| **SEEK-VAU (full)** | **55.6** | **45.5** | **43.7** |
-
-</details>
-
-## 👀 Case Study
-
-<p align="center">
-  <img src="assets/case_study.png" width="95%">
-</p>
-
-In this jewelry-store robbery case, SEEK-VAU first scans the surveillance timeline to form a global hypothesis, then seeks trigger evidence (thieves entering the store, breaking the front glass, stealing jewelry), verifies that the selected support covers the required event stages, and only then finalizes the robbery category with the localized interval.
-
-## 🗂️ Repository Structure
-
-```
-SEEK-VAU/
-├── saver_v3/            # core package
-│   ├── core/            #   actions, tools, rollout, verification, event chain, EFCV rewards
-│   ├── model/           #   Qwen3-VL loading and vLLM generation
-│   ├── data/            #   datasets, protocol traces, prepared SFT data
-│   ├── sft/             #   Stage-1 supervised fine-tuning
-│   ├── rl/              #   Stage-2 GRPO RL with EFCV
-│   ├── metrics/         #   Temporal mIoU / QA Accuracy / Evidence F1 evaluators
-│   ├── inference/       #   vLLM rollout, message runtime, predictor
-│   ├── teacher/         #   teacher judge for trajectory preparation
-│   ├── common/          #   experiment logging, runtime, message budget
-│   └── cli/             #   train / eval command-line entry points
-├── envs/                # conda environments (train / inference)
-├── scripts/             # one-click training / evaluation / inference scripts
-├── configs/             # experiment configs
-└── docs/                # additional documentation
-```
 
 ## ✏️ Citation
 
