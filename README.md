@@ -1,16 +1,12 @@
 # SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search
 
-<!-- TODO: replace <HF_ACCOUNT>/SEEK-Bench with the real HuggingFace dataset link once created -->
-
 [![arXiv](https://img.shields.io/badge/arXiv-2611.04554-B31B1B.svg)](https://arxiv.org/abs/2611.04554)
 [![Conference](https://img.shields.io/badge/NeurIPS-2026-Accepted-success.svg)](https://neurips.cc/)
 [![Code License](https://img.shields.io/badge/Code_License-Apache_2.0-green.svg)](LICENSE)
-[![Dataset License](https://img.shields.io/badge/SEEK--Bench_License-CC_BY--NC_4.0-yellow.svg)](#-seek-bench)
-[![HF Dataset](https://img.shields.io/badge/%F0%9F%A4%97_SEEK--Bench-Dataset-blue.svg)](https://huggingface.co/datasets/<HF_ACCOUNT>/SEEK-Bench)
 
-This is the official repository of the NeurIPS 2026 paper **"SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search"**, providing the full training / inference / evaluation code of SEEK-VAU and the **SEEK-Bench** benchmark.
+This is the official **code** repository of the NeurIPS 2026 paper **"SEEK-VAU: Towards Evidence-Faithful Video Anomaly Understanding via Agentic Search"**, providing the full training, inference, and evaluation pipeline. The SEEK-Bench benchmark data is released separately.
 
-**[[Paper]](https://arxiv.org/abs/2611.04554)** · **[[SEEK-Bench Dataset]](https://huggingface.co/datasets/<HF_ACCOUNT>/SEEK-Bench)**
+**[[Paper]](https://arxiv.org/abs/2611.04554)**
 
 <p align="center">
   <img src="assets/teaser.png" width="95%">
@@ -19,7 +15,8 @@ This is the official repository of the NeurIPS 2026 paper **"SEEK-VAU: Towards E
 ## 📰 News
 
 - **`2026/11/03`**: 📄 arXiv preprint released — [arXiv:2611.04554](https://arxiv.org/abs/2611.04554).
-- **`2026/11/01`**: 🎉 SEEK-VAU is accepted to **NeurIPS 2026**. Code and SEEK-Bench are released.
+- **`2026/09/25`**: 🎉 SEEK-VAU is accepted to **NeurIPS 2026** (main conference track).
+<!-- TODO: add a News entry with the date when the code becomes publicly available -->
 
 ## ✨ Highlights
 
@@ -48,43 +45,21 @@ The policy is trained in two stages:
 1. **SFT** on compact protocol traces that demonstrate the same `scan → seek → verify → finalize` interface used at inference;
 2. **GRPO RL with EFCV**, where the rollout reward couples answer correctness ($R_{\mathrm{acc}}$) with counterfactual evidence-faithfulness rewards ($R_{\mathrm{efcv}} = r_{\mathrm{faith}} + r_{\mathrm{min}} + r_{\mathrm{drop}}$).
 
-## 📊 SEEK-Bench
+## 📊 Benchmark: SEEK-Bench
 
 <p align="center">
   <img src="assets/seek_bench.png" width="85%">
 </p>
 
-SEEK-Bench is derived from [MSAD](https://arxiv.org/abs/2310.01307) and [ECVA](https://arxiv.org/abs/2412.07183), and re-annotated under a unified agentic VAU contract (model-assisted pre-annotation with Qwen3-VL-235B, followed by human review). Every episode contains anomaly labels, temporal intervals, semantic QA, event-chain stages, and evidence moments.
+Evaluation is conducted on **SEEK-Bench** (introduced in the paper): **2,878 episodes** derived from [MSAD](https://arxiv.org/abs/2310.01307) and [ECVA](https://arxiv.org/abs/2412.07183), re-annotated under a human-verified agentic VAU contract — 22 anomaly categories, a video-disjoint train/val split (**2,302 / 576** episodes), and per-episode anomaly labels, temporal intervals, semantic QA, event-chain stages (precursor / trigger / aftermath), and evidence moments. All reported results are computed on the val split.
 
-| Split | Episodes | Visual budget |
-|---|---:|---|
-| Train | 1,980 | ≤ 18 frames / episode |
-| Test | 980 | ≤ 18 frames / episode |
-
-**Metrics.** SEEK-Bench links temporal grounding, semantic correctness, and evidence recovery to a single benchmark contract:
+**Metrics.**
 
 - **Temporal mIoU** — anomaly interval grounding quality;
 - **QA Accuracy** — semantic case understanding (semantic-equivalence judged);
-- **Evidence F1@3** — top-3 evidence-window recovery against annotated evidence moments under a temporal-IoU criterion.
+- **Evidence F1** — one-to-one temporal-overlap matching (tIoU ≥ 0.3) between selected and reference evidence windows.
 
-**Download** (annotations + splits):
-
-```bash
-# TODO: replace with the real dataset id once the HF repo is populated
-git lfs install
-git clone https://huggingface.co/datasets/<HF_ACCOUNT>/SEEK-Bench
-```
-
-Expected directory structure after preparing videos and annotations:
-
-```
-data/
-├── videos/                  # source videos (MSAD / ECVA), organized by source dataset
-└── seek_bench/
-    ├── seek_bench_train.jsonl   # train episodes
-    ├── seek_bench_test.jsonl    # test episodes
-    └── evidence/                # evidence-moment annotations
-```
+> The SEEK-Bench data release is maintained **separately from this code repository** and will be linked here once published. The release contains annotations only; source videos follow the upstream MSAD / ECVA terms.
 
 > **License.** SEEK-Bench annotations are released under **CC BY-NC 4.0** (non-commercial). The source videos follow the terms of the original MSAD / ECVA datasets.
 
@@ -160,7 +135,7 @@ bash scripts/run_policy_rollout_vllm.sh
 bash scripts/run_fixed_baseline_eval_vllm.sh
 ```
 
-Evaluation reports **Temporal mIoU**, **QA Accuracy**, and **Evidence F1@3** on the SEEK-Bench test split (980 episodes).
+Evaluation reports **Temporal mIoU**, **QA Accuracy**, and **Evidence F1** on the SEEK-Bench val split (576 episodes, video-disjoint from the train split).
 
 ## 🏆 Main Results
 
@@ -184,7 +159,7 @@ All compared methods are evaluated on SEEK-Bench under a matched visual budget; 
 | VERA | InternVL2-8B | 31.5 | 18.6 |
 | **SEEK-VAU (ours)** | **Qwen3-VL-8B** | **55.6** | **45.5** |
 
-On **Evidence F1@3**, SEEK-VAU reaches **43.7**, ahead of the strongest baselines Qwen3-VL (28.1) and MiMo-VL (27.6) — the search-and-verify protocol improves not only final answers but also the recovery of the evidence windows that justify them, while using *fewer* frames on average than the fixed budget.
+On **Evidence F1**, SEEK-VAU reaches **43.7**, ahead of the strongest baselines Qwen3-VL (28.1) and MiMo-VL (27.6) — the search-and-verify protocol improves not only final answers but also the recovery of the evidence windows that justify them, while using *fewer* frames on average than the fixed budget.
 
 <p align="center">
   <img src="assets/evidence_leaderboard.png" width="85%">
@@ -265,8 +240,7 @@ The preprint version:
 
 ## 📄 License
 
-- **Code** in this repository is released under the **Apache 2.0 License** (see [LICENSE](LICENSE)).
-- **SEEK-Bench annotations** are released under **CC BY-NC 4.0** (non-commercial use only). Source videos remain under their original MSAD / ECVA terms.
+This repository (code) is released under the **Apache 2.0 License** (see [LICENSE](LICENSE)). The SEEK-Bench data release carries its own license terms, stated in its own repository when available.
 
 ## 📮 Contact
 
