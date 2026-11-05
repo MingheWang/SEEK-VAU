@@ -14,8 +14,8 @@ This is the official **code** repository of the NeurIPS 2026 paper **"SEEK-VAU: 
 
 ## 📰 News
 
-- **`2026/11/03`**: 📄 arXiv preprint released — [arXiv:2611.04554](https://arxiv.org/abs/2611.04554).
 - **`2026/09/25`**: 🎉 SEEK-VAU is accepted to **NeurIPS 2026** (main conference track).
+- **`2026/11/03`**: 📄 arXiv preprint released — [arXiv:2611.04554](https://arxiv.org/abs/2611.04554).
 <!-- TODO: add a News entry with the date when the code becomes publicly available -->
 
 ## ✨ Highlights
